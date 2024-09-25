@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "github.com/Tsuyopon-1067/grpc-client-streaming-test";
+
+package scantext;
+
+import "google/protobuf/empty.proto";
+
+service Sender {
+  rpc SendText(ScanText) returns (google.protobuf.Empty) {}
+}
+
+message ScanText { string content = 1; }

@@ -4,7 +4,7 @@
 // - protoc             v5.28.1
 // source: scantext/scantext.proto
 
-package grpc_client_streaming_test
+package scantext
 
 import (
 	context "context"
@@ -120,3 +120,4 @@ var Sender_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "scantext/scantext.proto",
 }
+

@@ -7,10 +7,12 @@ import (
 
 	"github.com/Tsuyopon-1067/grpc-client-streaming-test/scantext"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	// grpc.WithInsecure() を指定するとTLSで暗号化を行わずに通信する
+	conn, err := grpc.NewClient("localhost:8080", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Failed to connect: %v", err)
 	}

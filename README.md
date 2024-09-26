@@ -1,25 +1,13 @@
 # grpc-client-streaming-test
 
-```
-$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-```
+<div class="image-container">
+    <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3644068/bc7497c2-48f9-aa35-d20c-82511d0e7de8.png" width=420px alt="通信のイメージ"> <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3644068/fd0debd3-d735-edca-f99c-219b834dc30e.png" width=250px alt="通信するデータ">
+</div>
 
-```
-.
-├── README.md
-├── scantext
-│   └── scantext.proto
-└── server
-    └── main.go
-```
-
-```
-protoc --go_out=. --go_opt=paths=source_relative \
-    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
-    scantext/scantext.proto
-```
+gRPCのクライアントストリーミングサンプルです．
 
 ```
 $ go mod tidy
+$ go run ./server/main.go
+$ go run ./client/main.go
 ```

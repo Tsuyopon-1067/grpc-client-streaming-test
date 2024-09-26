@@ -16,28 +16,28 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to connect: %v", err)
 	}
-	defer conn.Close()
+	defer conn.Close() // main関数終了時に接続を閉じる
 
-	client := scantext.NewSenderClient(conn)
+	client := scantext.NewSenderClient(conn) // クライアントを作成
 
 	for {
-		var text string
-		fmt.Println("Enter text: (quit to exit)")
-		fmt.Scan(&text)
-		if text == "quit" {
+		var text string                           // 標準入力受取用
+		fmt.Println("Enter text: (quit to exit)") // ただの指示
+		fmt.Scan(&text)                           // 標準入力を受け取る
+		if text == "quit" {                       // quit と入力されたらループを抜けて終了
 			break
 		}
 
-		scanText := scantext.ScanText{
+		scanText := scantext.ScanText{ // 送信するメッセージを作成
 			Content: text,
 		}
 
-		_, err := client.SendText(context.Background(), &scanText)
-		if err != nil {
+		_, err := client.SendText(context.Background(), &scanText) // メッセージを送信
+		if err != nil {                                            // エラーが発生したらログ出力して終了
 			log.Fatalf("Error sending message: %v", err)
 		}
 
-		fmt.Printf("Sent message: %s\n", text)
+		fmt.Printf("Sent message: %s\n", text) // ただのログ出力
 	}
 
 	fmt.Println("All messages sent successfully")

@@ -120,4 +120,3 @@ var Sender_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "scantext/scantext.proto",
 }
-
